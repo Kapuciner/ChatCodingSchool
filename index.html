@@ -1,0 +1,16 @@
+<html>
+<body>
+Имя: <input id="user" type="text" size="20"><br>
+<button id="submit">Отправить</button>
+<div id="message"></div>
+</body>
+<script>
+ submit.onclick=async function(){
+    let response = await fetch("/ajax?name="+encodeURIComponent(user.value));
+    if (response.ok) { 
+       let data = await response.json();
+       message.innerText=data.message;
+    }
+ };
+</script>
+</html>
